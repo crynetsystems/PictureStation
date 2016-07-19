@@ -1,0 +1,51 @@
+#header{
+	width: 70%;
+	margin: 0px auto 0px auto;
+	min-height: 60px;
+}
+#content{
+	width: 70%;
+	height: 100px;
+	margin: 0px auto 0px auto;
+}
+#adsTop,#adsFoot{
+	width: 70%;
+	height: auto;
+	margin: 0px auto 0px auto;
+}
+#adsTop li{
+	display: block;
+}
+.titleList{
+	list-style: none;
+	padding-left: 50px;
+	margin-top: 5px;
+}
+.titleList li{
+	display: block;
+	float: left;
+	width: 80px;
+	height: 25px;
+	padding-left: 5px;
+	padding-top: 5px;
+}
+.adsList li{
+	display: block;
+	height: 50px;
+}
+.adsList,.urlList{
+	padding:0px;
+	list-style: none;
+	margin: 0px;
+}
+#listContent{
+	width: 70%;
+	margin: 0px auto 0px auto;
+	height: auto;
+}
+.urlList li{
+	display: block;
+	height: 30px;
+	vertical-align: center;
+	font-size: 16px;
+}
