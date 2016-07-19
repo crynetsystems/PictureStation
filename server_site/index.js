@@ -5,19 +5,22 @@ var render = views("views",{map:{html:'ejs'}});
 var logger = require('koa-logger');
 var static = require('koa-static');
 var path = require('path');
+var routes = require('./routes/index.js').routes;
 var app = koa();
 
 app.use(logger());
 app.use(static(path.join(__dirname+"/public")));
 
-router.get('/',function*(next){
-	this.body = yield render('index.html',{user:"none"});
-	yield next;
-});
 
-app.use(router.routes());
-app.use(function*(next){
+console.log('loading....');
+
+routes(app);
+
+
+app.use(function*(){
+
 	console.log('hehe')
-	yield next;
+	
 });
 app.listen(3000);
+

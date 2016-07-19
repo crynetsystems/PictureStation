@@ -1,12 +1,19 @@
-/*var views = require('co-views');
+var views = require('co-views');
 var render = views("views",{map:{html:'ejs'}});
 var router = require('koa-router')();
-module.exports = {routes:routes};
+var displayObj = require('../config.js');
+module.exports.routes=(app) =>{
+	
+	app.use(router.routes());
+	router.get('/',function*(){
+		
+	
+	
+	//读取列表
+	
+	this.body = yield render('index.html',{displayObj:displayObj});
 
-function routes(app){
-
-	app.use(router);
-	router.get('/',function*(next){
-	this.body = yield render('index.html',{user:"wanlf"});
-	});
-};*/
+	
+	console.log('hehe1')
+});
+};
