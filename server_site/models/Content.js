@@ -2,6 +2,8 @@ var mongoose = require('mongoose');
 
 var contentSchema = mongoose.Schema({
 
+	create_date:{type:String},//时间
+
 	class_tag:{type:String},//所属标签
 
     content_name:{ type: String }, //内容标题
