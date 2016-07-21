@@ -5,24 +5,24 @@
     <title>pictureStation</title>
     <link rel="stylesheet" href="/mainTheme.css">
   </head>
-  <body>
+  <body id="app">
     <div id="header">
 
     </div>
     <div id="content">
     	<ul class="titleList">
     		<%for(var i of displayObj.image){%>
-    			<li><a href="#"><%=i%></a></li>
+    			<li><a v-on:click="go('<%=i.tag_id%>')" href="#"><%=i.tag_name%></a></li>
     		<%}%>
     	</ul>
     	<ul class="titleList">
     		<%for(var i of displayObj.novel){%>
-    			<li><a href="#"><%=i%></a></li>
+    			<li><a v-on:click="go('<%=i.tag_id%>')" href="#"><%=i.tag_name%></a></li>
     		<%}%>
     	</ul>
     	<ul class="titleList">
     		<%for(var i of displayObj.movies){%>
-    			<li><a href="#"><%=i%></a></li>
+    			<li><a v-on:click="go('<%=i.tag_id%>')" href="#"><%=i.tag_name%></a></li>
     		<%}%>
     	</ul>
     </div>
@@ -36,13 +36,11 @@
     	</ul>
     </div>
     <div id="listContent">
-    	<ul class="urlList">
-    		<li><a href="#"><span>测试链接测试链接测试链接测试链接</span></a><hr/></li>
-    		<li>测试链接测试链接测试链接<hr/></li>
-    		<li>测试链接测试链接测试链接测试链接<hr/></li>
-    		<li>测试链接测试链接测试链接测试链接测试链接<hr/></li>
-    		<li>测试链接测试链接测试链接测试链接测试链接测试链接</li>
-    		<li>测试链接测试链接测试链接测试链接测试链接测试链接</li>
+    	<ul class="urlList" >
+    		<li v-for="item in list">
+            <span>{{item.content_name}}</span>
+            <span>{{item.create_date}}</span>     
+            </li>
     	</ul>
     </div>
     <div id="adsFoot">
@@ -56,5 +54,32 @@
     	</ul>
     </div>
     <div id="footer"></div>
+    <script src="http://cdn.jsdelivr.net/vue/1.0.26/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/vue.resource/0.9.3/vue-resource.min.js"></script>
+    <script>
+        
+        var vm = new Vue({
+            el: '#app',
+            data:{list:[]},
+            methods:{
+                go:function(id){
+                    this.$http.post('/getlist',{id:id}).then(res=>{
+                        
+                        this.list.splice(0,this.list.length);
+                        JSON.parse(res.body).forEach(item=>{
+                            this.list.push(item);
+                            console.log('push!')
+                        })
+                        
+                    })
+                    
+                }
+            },
+            created: function () {
+                console.log('begin')
+            }
+        })
+
+    </script>
   </body>
 </html>

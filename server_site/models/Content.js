@@ -1,4 +1,5 @@
-var mongoose = require('mongoose');
+var mongoose = require('./db.js')
+
 
 var contentSchema = mongoose.Schema({
 
@@ -10,7 +11,7 @@ var contentSchema = mongoose.Schema({
 
     content_list:{ type:[],default:[]},//图片列表,内容（ url ）
 
-    is_pic:{type:int,default:false},//是否为图片内容(1:图片2:文字,3:电影)
+    is_pic:{type:Number,default:false},//是否为图片内容(1:图片2:文字,3:电影)
 
     content:{type:String},//当时文字内容时，内部存储文字内容
 
