@@ -10,6 +10,8 @@ var index = function*(){
 }
 
 
+
+
 //579062ae08f2293729f4b2dd
 var content = function*(){
     var res = yield contentModel.findOne({_id:this.params.id});
@@ -24,7 +26,7 @@ var getlist = function *(){
 	//console.log(res.content_name)
 	//console.log(Parse.json(res));
 
-	this.body = JSON.stringify([{create_date:"2016/7/21",content_name:"test_title_list"},{create_date:"2016/7/21",content_name:"test_title_list2"}]);
+	this.body = JSON.stringify({class_tag:this.request.body.id,pagecount:140,data:[{create_date:"2016/7/21",content_name:"test_title_list",id:"579062ae08f2293729f4b2dd"},{create_date:"2016/7/21",content_name:"test_title_list2",id:"579062ae08f2293729f4b2dd"},{create_date:"2016/7/21",content_name:"test_title_list2",id:"579062ae08f2293729f4b2dd"},{create_date:"2016/7/21",content_name:"test_title_list2",id:"579062ae08f2293729f4b2dd"},{create_date:"2016/7/21",content_name:"test_title_list2",id:"579062ae08f2293729f4b2dd"},{create_date:"2016/7/21",content_name:"test_title_list2",id:"579062ae08f2293729f4b2dd"},{create_date:"2016/7/21",content_name:"test_title_list2",id:"579062ae08f2293729f4b2dd"},{create_date:"2016/7/21",content_name:"test_title_list2",id:"579062ae08f2293729f4b2dd"},{create_date:"2016/7/21",content_name:"test_title_list2",id:"579062ae08f2293729f4b2dd"},{create_date:"2016/7/21",content_name:"test_title_list2",id:"579062ae08f2293729f4b2dd"},{create_date:"2016/7/21",content_name:"test_title_list2",id:"579062ae08f2293729f4b2dd"},{create_date:"2016/7/21",content_name:"test_title_list2",id:"579062ae08f2293729f4b2dd"}]});
 
 }
 
