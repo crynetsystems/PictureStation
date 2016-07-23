@@ -6,7 +6,7 @@ var contentModel = require('../models/Content.js');
 var index = function*(){
 	//读取列表 redis
 	this.body = yield render('index.html',{displayObj:displayObj});
-	
+
 }
 
 
@@ -30,20 +30,31 @@ var getlist = function *(){
 
 }
 
+var list = function*(){
+
+		var page = this.params.page;
+		var current = page || 1;
+		var tag_name = this.params.tag_name;
+
+		//get top 70 data,read from redis
+		var example = [{title:"测试标题测试标题测试标题测试标题测试标题",create_date:"2016/7/18",id:"579062ae08f2293729f4b2dd"}];
+		//get all the data counts read from redis
+		var count = 1400;
+		var page_count = -(~(count/70));
+
+		this.body = yield render('listpage',{
+				displayObj:displayObj,//list title data
+				list:example,//list data
+				tag_name:tag_name,//classify name
+				list_count:count,//total list data count
+				page_count:page_count,//render page count
+				current_page:current
+			});
+
+}
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-module.exports = {index:index,content:content,getlist:getlist};
+module.exports = {index:index,content:content,getlist:getlist,list:list};

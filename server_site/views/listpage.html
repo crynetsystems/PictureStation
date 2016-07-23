@@ -35,7 +35,44 @@
         <li><a href="#"><img src="/ads/123.gif" alt="" /></a></li>
     	</ul>
     </div>
+    <!--list starts here-->
+    <div id="listContent" v-if="isinit">
+        <ul class="urlList" >
+          <%list.forEach((item)=>{%>
+            <li>
+            <a class="title-link" href="/<%=tag_name%>/<%=item.id%>" target="_blank" >
+                <div class="title-div" >
+                    <span class="title-span"><%=item.title%></span>
+                    <span class="time-span"><%=item.create_date%></span>
+                    <hr class="title-hr">
+                </div>
+            </a>
+            </li>
+          <%})%>
+        </ul>
+        <div id="page-list">
+            <ul id="page-list-ul">
+            <%if(current_page <= 7){%>
+                <%for(var i = 1;i<=(list_count<=13?list_count:13);i++){%>
+                    <%if(i == current_page){%>
+                    <li><a class="active" href="/<%=tag_name%>/page/<%=i%>"><%=i%></a></li>
+                    <%}else{%>
+                    <li><a href="/<%=tag_name%>/page/<%=i%>"><%=i%></a></li>
+                    <%}%>
+                <%}%>
+            <%}else{%>
+              <%for(var i = current_page - 7;i<=(current_page+7<=list_count?current_page+7:list_count);i++){%>
+                  <%if(i == current_page){%>
+                  <li><a class="active" href="/<%=tag_name%>/page/<%=i%>"><%=i%></a></li>
+                  <%}%>
+                  <li><a href="/<%=tag_name%>/page/<%=i%>"><%=i%></a></li>
+              <%}%>
+            <%}%>
 
+            </ul>
+        </div>
+    </div>
+    <!--list ends here-->
     <div id="adsFoot">
     	<ul class="adsList">
         <li><a href="#"><img src="/ads/123.gif" alt="" /></a></li>

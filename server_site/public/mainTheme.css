@@ -30,7 +30,7 @@
 	height: auto;
 	margin: 0px auto 0px auto;
 }
-#adsTop li{
+#adsTop li,#adsFoot li{
 	display: block;
 	text-align: center;
 }
@@ -124,10 +124,10 @@ img.display-image{
     float: left;
     text-align: center;
     border: 1px;
-    
+
 
 }
-#page-list-ul 
+#page-list-ul
 {
 	margin-top: 5px;
 	margin-bottom: 5px;
