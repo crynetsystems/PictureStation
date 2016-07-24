@@ -147,3 +147,6 @@ img.display-image{
 	height: 24px;
 	margin-bottom: 5px;
 }
+a.active{
+	 background-color: antiquewhite;
+}

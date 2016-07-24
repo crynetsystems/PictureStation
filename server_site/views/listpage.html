@@ -52,6 +52,7 @@
         </ul>
         <div id="page-list">
             <ul id="page-list-ul">
+              <li><a  href="/<%=tag_name%>/page/1">第一页</a></li>
             <%if(current_page <= 7){%>
                 <%for(var i = 1;i<=(list_count<=13?list_count:13);i++){%>
                     <%if(i == current_page){%>
@@ -61,14 +62,15 @@
                     <%}%>
                 <%}%>
             <%}else{%>
-              <%for(var i = current_page - 7;i<=(current_page+7<=list_count?current_page+7:list_count);i++){%>
+              <%for(var i = current_page - 7;i<=(current_page+7<=page_count?current_page+7:page_count);i++){%>
                   <%if(i == current_page){%>
                   <li><a class="active" href="/<%=tag_name%>/page/<%=i%>"><%=i%></a></li>
-                  <%}%>
+                  <%}else{%>
                   <li><a href="/<%=tag_name%>/page/<%=i%>"><%=i%></a></li>
+                  <%}%>
               <%}%>
             <%}%>
-
+              <li><a  href="/<%=tag_name%>/page/<%=page_count%>">最后一页</a></li>
             </ul>
         </div>
     </div>

@@ -6,5 +6,5 @@ module.exports.routes=(app) =>{
 	router.get('/content/:tag/:id',home.content);
 	//router.post('/getlist',home.getlist);
 	router.get('/classify/:tag_name',home.list);
-	//router.get('/classify/:tag_name/:page',home.list);
+	router.get('/:tag_name/page/:page',home.list);
 };

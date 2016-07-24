@@ -22,22 +22,34 @@ var content = function*(){
 var getlist = function *(){
 	//read form redis
 	//var res = yield contentModel.find({class_tag:this.request.body.id});
-	//console.log(res);
-	//console.log(res.content_name)
-	//console.log(Parse.json(res));
+	
 
 	this.body = JSON.stringify({class_tag:this.request.body.id,pagecount:140,data:[{create_date:"2016/7/21",content_name:"test_title_list",id:"579062ae08f2293729f4b2dd"},{create_date:"2016/7/21",content_name:"test_title_list2",id:"579062ae08f2293729f4b2dd"},{create_date:"2016/7/21",content_name:"test_title_list2",id:"579062ae08f2293729f4b2dd"},{create_date:"2016/7/21",content_name:"test_title_list2",id:"579062ae08f2293729f4b2dd"},{create_date:"2016/7/21",content_name:"test_title_list2",id:"579062ae08f2293729f4b2dd"},{create_date:"2016/7/21",content_name:"test_title_list2",id:"579062ae08f2293729f4b2dd"},{create_date:"2016/7/21",content_name:"test_title_list2",id:"579062ae08f2293729f4b2dd"},{create_date:"2016/7/21",content_name:"test_title_list2",id:"579062ae08f2293729f4b2dd"},{create_date:"2016/7/21",content_name:"test_title_list2",id:"579062ae08f2293729f4b2dd"},{create_date:"2016/7/21",content_name:"test_title_list2",id:"579062ae08f2293729f4b2dd"},{create_date:"2016/7/21",content_name:"test_title_list2",id:"579062ae08f2293729f4b2dd"},{create_date:"2016/7/21",content_name:"test_title_list2",id:"579062ae08f2293729f4b2dd"}]});
 
 }
 
 var list = function*(){
-
-		var page = this.params.page;
-		var current = page || 1;
+		var current = parseInt(this.params.page || 1);
 		var tag_name = this.params.tag_name;
 
 		//get top 70 data,read from redis
-		var example = [{title:"测试标题测试标题测试标题测试标题测试标题",create_date:"2016/7/18",id:"579062ae08f2293729f4b2dd"}];
+		var example = [  {title:"测试标题测试标题测试标题测试标题测试标题",create_date:"2016/7/18",id:"579062ae08f2293729f4b2dd"}
+										,{title:"测试标题测试标题测试标题测试标题测试标题",create_date:"2016/7/18",id:"579062ae08f2293729f4b2dd"}
+										,{title:"测试标题测试标题测试标题测试标题测试标题",create_date:"2016/7/18",id:"579062ae08f2293729f4b2dd"}
+										,{title:"测试标题测试标题测试标题测试标题测试标题",create_date:"2016/7/18",id:"579062ae08f2293729f4b2dd"}
+										,{title:"测试标题测试标题测试标题测试标题测试标题",create_date:"2016/7/18",id:"579062ae08f2293729f4b2dd"}
+										,{title:"测试标题测试标题测试标题测试标题测试标题",create_date:"2016/7/18",id:"579062ae08f2293729f4b2dd"}
+										,{title:"测试标题测试标题测试标题测试标题测试标题",create_date:"2016/7/18",id:"579062ae08f2293729f4b2dd"}
+										,{title:"测试标题测试标题测试标题测试标题测试标题",create_date:"2016/7/18",id:"579062ae08f2293729f4b2dd"}
+										,{title:"测试标题测试标题测试标题测试标题测试标题",create_date:"2016/7/18",id:"579062ae08f2293729f4b2dd"}
+										,{title:"测试标题测试标题测试标题测试标题测试标题",create_date:"2016/7/18",id:"579062ae08f2293729f4b2dd"}
+										,{title:"测试标题测试标题测试标题测试标题测试标题",create_date:"2016/7/18",id:"579062ae08f2293729f4b2dd"}
+										,{title:"测试标题测试标题测试标题测试标题测试标题",create_date:"2016/7/18",id:"579062ae08f2293729f4b2dd"}
+										,{title:"测试标题测试标题测试标题测试标题测试标题",create_date:"2016/7/18",id:"579062ae08f2293729f4b2dd"}
+										,{title:"测试标题测试标题测试标题测试标题测试标题",create_date:"2016/7/18",id:"579062ae08f2293729f4b2dd"}
+										,{title:"测试标题测试标题测试标题测试标题测试标题",create_date:"2016/7/18",id:"579062ae08f2293729f4b2dd"}
+										,{title:"测试标题测试标题测试标题测试标题测试标题",create_date:"2016/7/18",id:"579062ae08f2293729f4b2dd"}
+									];
 		//get all the data counts read from redis
 		var count = 1400;
 		var page_count = -(~(count/70));
