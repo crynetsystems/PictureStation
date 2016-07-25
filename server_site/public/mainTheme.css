@@ -26,9 +26,12 @@
 	text-align: center;
 }
 #adsTop,#adsFoot{
-	width: 70%;
+	width: 100%;
 	height: auto;
-	margin: 0px auto 0px auto;
+}
+#adsTop li,#adsFoot li{
+	text-align: center;
+
 }
 #adsTop li,#adsFoot li{
 	display: block;
@@ -149,4 +152,22 @@ img.display-image{
 }
 a.active{
 	 background-color: antiquewhite;
+}
+#img-content{
+	 width: 100%;
+}
+.img-list
+{
+    list-style: none;
+		padding: 0px;
+}
+.img-list li{
+    text-align: center;
+}
+.novels{
+		width: 70%;
+		text-align: center;
+}
+.content-novel{
+	  text-align: center;
 }

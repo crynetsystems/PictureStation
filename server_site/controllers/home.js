@@ -12,43 +12,72 @@ var index = function*(){
 
 
 
-//579062ae08f2293729f4b2dd
+//579610f508cc147f68edafb9
 var content = function*(){
+	  console.log(this.params)
     var res = yield contentModel.findOne({_id:this.params.id});
-    console.log(res);
-	this.body = yield render('content.html',{displayObj:displayObj});
+		if(!res)
+		{
+				return;
+		}
+
+		var renderObj = {displayObj:displayObj};
+		switch (res.is_pic) {
+			//image content
+			case 1:
+				renderObj.img_urls = res.content_list;
+				renderObj.contents = null;
+				renderObj.magnet = null;
+				break;
+			//novel content
+			case 2:
+				renderObj.contents = res.content;
+				renderObj.magnet = null;
+				renderObj.img_urls = null;
+				break;
+		  //movie content
+			case 3:
+				renderObj.magnet = res.magnet;
+				if(res.content_list && res.content_list.length>0)
+				{
+						 renderObj.img_urls = res.content_list;
+				}
+				if(res.content)
+				{
+						 renderObj.contents = res.content;
+				}
+				break;
+			default:
+
+		}
+		console.log(res);
+			console.log(renderObj);
+	  this.body = yield render('content.html',renderObj);
 }
 
-var getlist = function *(){
-	//read form redis
-	//var res = yield contentModel.find({class_tag:this.request.body.id});
-	
 
-	this.body = JSON.stringify({class_tag:this.request.body.id,pagecount:140,data:[{create_date:"2016/7/21",content_name:"test_title_list",id:"579062ae08f2293729f4b2dd"},{create_date:"2016/7/21",content_name:"test_title_list2",id:"579062ae08f2293729f4b2dd"},{create_date:"2016/7/21",content_name:"test_title_list2",id:"579062ae08f2293729f4b2dd"},{create_date:"2016/7/21",content_name:"test_title_list2",id:"579062ae08f2293729f4b2dd"},{create_date:"2016/7/21",content_name:"test_title_list2",id:"579062ae08f2293729f4b2dd"},{create_date:"2016/7/21",content_name:"test_title_list2",id:"579062ae08f2293729f4b2dd"},{create_date:"2016/7/21",content_name:"test_title_list2",id:"579062ae08f2293729f4b2dd"},{create_date:"2016/7/21",content_name:"test_title_list2",id:"579062ae08f2293729f4b2dd"},{create_date:"2016/7/21",content_name:"test_title_list2",id:"579062ae08f2293729f4b2dd"},{create_date:"2016/7/21",content_name:"test_title_list2",id:"579062ae08f2293729f4b2dd"},{create_date:"2016/7/21",content_name:"test_title_list2",id:"579062ae08f2293729f4b2dd"},{create_date:"2016/7/21",content_name:"test_title_list2",id:"579062ae08f2293729f4b2dd"}]});
-
-}
 
 var list = function*(){
 		var current = parseInt(this.params.page || 1);
 		var tag_name = this.params.tag_name;
 
 		//get top 70 data,read from redis
-		var example = [  {title:"测试标题测试标题测试标题测试标题测试标题",create_date:"2016/7/18",id:"579062ae08f2293729f4b2dd"}
-										,{title:"测试标题测试标题测试标题测试标题测试标题",create_date:"2016/7/18",id:"579062ae08f2293729f4b2dd"}
-										,{title:"测试标题测试标题测试标题测试标题测试标题",create_date:"2016/7/18",id:"579062ae08f2293729f4b2dd"}
-										,{title:"测试标题测试标题测试标题测试标题测试标题",create_date:"2016/7/18",id:"579062ae08f2293729f4b2dd"}
-										,{title:"测试标题测试标题测试标题测试标题测试标题",create_date:"2016/7/18",id:"579062ae08f2293729f4b2dd"}
-										,{title:"测试标题测试标题测试标题测试标题测试标题",create_date:"2016/7/18",id:"579062ae08f2293729f4b2dd"}
-										,{title:"测试标题测试标题测试标题测试标题测试标题",create_date:"2016/7/18",id:"579062ae08f2293729f4b2dd"}
-										,{title:"测试标题测试标题测试标题测试标题测试标题",create_date:"2016/7/18",id:"579062ae08f2293729f4b2dd"}
-										,{title:"测试标题测试标题测试标题测试标题测试标题",create_date:"2016/7/18",id:"579062ae08f2293729f4b2dd"}
-										,{title:"测试标题测试标题测试标题测试标题测试标题",create_date:"2016/7/18",id:"579062ae08f2293729f4b2dd"}
-										,{title:"测试标题测试标题测试标题测试标题测试标题",create_date:"2016/7/18",id:"579062ae08f2293729f4b2dd"}
-										,{title:"测试标题测试标题测试标题测试标题测试标题",create_date:"2016/7/18",id:"579062ae08f2293729f4b2dd"}
-										,{title:"测试标题测试标题测试标题测试标题测试标题",create_date:"2016/7/18",id:"579062ae08f2293729f4b2dd"}
-										,{title:"测试标题测试标题测试标题测试标题测试标题",create_date:"2016/7/18",id:"579062ae08f2293729f4b2dd"}
-										,{title:"测试标题测试标题测试标题测试标题测试标题",create_date:"2016/7/18",id:"579062ae08f2293729f4b2dd"}
-										,{title:"测试标题测试标题测试标题测试标题测试标题",create_date:"2016/7/18",id:"579062ae08f2293729f4b2dd"}
+		var example = [  {title:"测试标题测试标题测试标题测试标题测试标题",create_date:"2016/7/18",id:"579610f508cc147f68edafb9"}
+										,{title:"测试标题测试标题测试标题测试标题测试标题",create_date:"2016/7/18",id:"579610f508cc147f68edafb9"}
+										,{title:"测试标题测试标题测试标题测试标题测试标题",create_date:"2016/7/18",id:"579610f508cc147f68edafb9"}
+										,{title:"测试标题测试标题测试标题测试标题测试标题",create_date:"2016/7/18",id:"579610f508cc147f68edafb9"}
+										,{title:"测试标题测试标题测试标题测试标题测试标题",create_date:"2016/7/18",id:"579610f508cc147f68edafb9"}
+										,{title:"测试标题测试标题测试标题测试标题测试标题",create_date:"2016/7/18",id:"579610f508cc147f68edafb9"}
+										,{title:"测试标题测试标题测试标题测试标题测试标题",create_date:"2016/7/18",id:"579610f508cc147f68edafb9"}
+										,{title:"测试标题测试标题测试标题测试标题测试标题",create_date:"2016/7/18",id:"579610f508cc147f68edafb9"}
+										,{title:"测试标题测试标题测试标题测试标题测试标题",create_date:"2016/7/18",id:"579610f508cc147f68edafb9"}
+										,{title:"测试标题测试标题测试标题测试标题测试标题",create_date:"2016/7/18",id:"579610f508cc147f68edafb9"}
+										,{title:"测试标题测试标题测试标题测试标题测试标题",create_date:"2016/7/18",id:"579610f508cc147f68edafb9"}
+										,{title:"测试标题测试标题测试标题测试标题测试标题",create_date:"2016/7/18",id:"579610f508cc147f68edafb9"}
+										,{title:"测试标题测试标题测试标题测试标题测试标题",create_date:"2016/7/18",id:"579610f508cc147f68edafb9"}
+										,{title:"测试标题测试标题测试标题测试标题测试标题",create_date:"2016/7/18",id:"579610f508cc147f68edafb9"}
+										,{title:"测试标题测试标题测试标题测试标题测试标题",create_date:"2016/7/18",id:"579610f508cc147f68edafb9"}
+										,{title:"测试标题测试标题测试标题测试标题测试标题",create_date:"2016/7/18",id:"579610f508cc147f68edafb9"}
 									];
 		//get all the data counts read from redis
 		var count = 1400;
@@ -69,4 +98,4 @@ var list = function*(){
 
 
 
-module.exports = {index:index,content:content,getlist:getlist,list:list};
+module.exports = {index:index,content:content,list:list};

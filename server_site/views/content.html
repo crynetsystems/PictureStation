@@ -35,7 +35,32 @@
         <li><a href="#"><img src="/ads/123.gif" alt="" /></a></li>
     	</ul>
     </div>
+    <!--content starts here-->
+    <div id="img-content" >
+        <!--images-->
 
+        <%if(img_urls){%>
+        <ul class="img-list" >
+            <%for(var i of img_urls){%>
+              <li><img src="<%=i%>" alt="" /></li>
+            <%}%>
+        </ul>
+        <%}%>
+
+        <!--articles-->
+        <%if(contents){%>
+          <div class="content-novel">
+            <p class="novels"><%=contents%></p>
+          </div>
+        <%}%>
+
+        <!--movies-->
+        <%if(magnet){%>
+        <p><%=magnet%></p>
+        <%}%>
+
+    </div>
+    <!--content ends here-->
     <div id="adsFoot">
     	<ul class="adsList">
         <li><a href="#"><img src="/ads/123.gif" alt="" /></a></li>

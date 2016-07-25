@@ -12,17 +12,17 @@
     <div id="content">
     	<ul class="titleList">
     		<%for(var i of displayObj.image){%>
-    			<li><a  href="/classify/<%=i.tag_id%>" ><%=i.tag_name%></a></li>
+    			<li><a  href="/<%=i.tag_id%>" ><%=i.tag_name%></a></li>
     		<%}%>
     	</ul>
     	<ul class="titleList">
     		<%for(var i of displayObj.novel){%>
-    			<li><a  href="/classify/<%=i.tag_id%>"><%=i.tag_name%></a></li>
+    			<li><a  href="/<%=i.tag_id%>"><%=i.tag_name%></a></li>
     		<%}%>
     	</ul>
     	<ul class="titleList">
     		<%for(var i of displayObj.movies){%>
-    			<li><a  href="/classify/<%=i.tag_id%>"><%=i.tag_name%></a></li>
+    			<li><a  href="/<%=i.tag_id%>"><%=i.tag_name%></a></li>
     		<%}%>
     	</ul>
     </div>
@@ -40,7 +40,7 @@
         <ul class="urlList" >
           <%list.forEach((item)=>{%>
             <li>
-            <a class="title-link" href="/<%=tag_name%>/<%=item.id%>" target="_blank" >
+            <a class="title-link" href="/content/<%=tag_name%>/<%=item.id%>" target="_blank" >
                 <div class="title-div" >
                     <span class="title-span"><%=item.title%></span>
                     <span class="time-span"><%=item.create_date%></span>
