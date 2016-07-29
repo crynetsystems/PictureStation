@@ -154,7 +154,12 @@ a.active{
 	 background-color: antiquewhite;
 }
 #img-content{
-	 width: 100%;
+		width: 70%;
+    margin: 20px auto;
+    border: 1px solid #cdcdcd;
+    padding: 20px;
+    box-shadow: 1px 1px 1px #cdcdcd;
+    border-radius: 7px;
 }
 .img-list
 {
@@ -165,9 +170,12 @@ a.active{
     text-align: center;
 }
 .novels{
-		width: 70%;
-		text-align: center;
+	width: 100%;
+	text-align: center;
+	color: navy;
 }
 .content-novel{
-	  text-align: center;
+	text-align: center;
+	width: 100%;
+	margin: 20px auto;
 }

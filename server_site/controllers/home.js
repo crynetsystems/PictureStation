@@ -60,32 +60,22 @@ var content = function*(){
 var list = function*(){
 		var current = parseInt(this.params.page || 1);
 		var tag_name = this.params.tag_name;
-
+		
 		//get top 70 data,read from redis
-		var example = [  {title:"测试标题测试标题测试标题测试标题测试标题",create_date:"2016/7/18",id:"579610f508cc147f68edafb9"}
-										,{title:"测试标题测试标题测试标题测试标题测试标题",create_date:"2016/7/18",id:"579610f508cc147f68edafb9"}
-										,{title:"测试标题测试标题测试标题测试标题测试标题",create_date:"2016/7/18",id:"579610f508cc147f68edafb9"}
-										,{title:"测试标题测试标题测试标题测试标题测试标题",create_date:"2016/7/18",id:"579610f508cc147f68edafb9"}
-										,{title:"测试标题测试标题测试标题测试标题测试标题",create_date:"2016/7/18",id:"579610f508cc147f68edafb9"}
-										,{title:"测试标题测试标题测试标题测试标题测试标题",create_date:"2016/7/18",id:"579610f508cc147f68edafb9"}
-										,{title:"测试标题测试标题测试标题测试标题测试标题",create_date:"2016/7/18",id:"579610f508cc147f68edafb9"}
-										,{title:"测试标题测试标题测试标题测试标题测试标题",create_date:"2016/7/18",id:"579610f508cc147f68edafb9"}
-										,{title:"测试标题测试标题测试标题测试标题测试标题",create_date:"2016/7/18",id:"579610f508cc147f68edafb9"}
-										,{title:"测试标题测试标题测试标题测试标题测试标题",create_date:"2016/7/18",id:"579610f508cc147f68edafb9"}
-										,{title:"测试标题测试标题测试标题测试标题测试标题",create_date:"2016/7/18",id:"579610f508cc147f68edafb9"}
-										,{title:"测试标题测试标题测试标题测试标题测试标题",create_date:"2016/7/18",id:"579610f508cc147f68edafb9"}
-										,{title:"测试标题测试标题测试标题测试标题测试标题",create_date:"2016/7/18",id:"579610f508cc147f68edafb9"}
-										,{title:"测试标题测试标题测试标题测试标题测试标题",create_date:"2016/7/18",id:"579610f508cc147f68edafb9"}
-										,{title:"测试标题测试标题测试标题测试标题测试标题",create_date:"2016/7/18",id:"579610f508cc147f68edafb9"}
-										,{title:"测试标题测试标题测试标题测试标题测试标题",create_date:"2016/7/18",id:"579610f508cc147f68edafb9"}
-									];
+		var res = yield contentModel.find({class_tag:tag_name});
+
+		console.log(res);
+
+		var count = yield contentModel.count({class_tag:tag_name});
+
+		console.log(count);
 		//get all the data counts read from redis
-		var count = 1400;
+		//var count = 1400;
 		var page_count = -(~(count/70));
 
 		this.body = yield render('listpage',{
 				displayObj:displayObj,//list title data
-				list:example,//list data
+				list:res,//list data
 				tag_name:tag_name,//classify name
 				list_count:count,//total list data count
 				page_count:page_count,//render page count

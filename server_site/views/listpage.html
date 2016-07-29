@@ -42,7 +42,7 @@
             <li>
             <a class="title-link" href="/content/<%=tag_name%>/<%=item.id%>" target="_blank" >
                 <div class="title-div" >
-                    <span class="title-span"><%=item.title%></span>
+                    <span class="title-span"><%=item.content_name%></span>
                     <span class="time-span"><%=item.create_date%></span>
                     <hr class="title-hr">
                 </div>
@@ -53,7 +53,7 @@
         <div id="page-list">
             <ul id="page-list-ul">
               <li><a  href="/<%=tag_name%>/page/1">第一页</a></li>
-            <%if(current_page <= 7){%>
+            <%if(page_count <= 7){%>
                 <%for(var i = 1;i<=(list_count<=13?list_count:13);i++){%>
                     <%if(i == current_page){%>
                     <li><a class="active" href="/<%=tag_name%>/page/<%=i%>"><%=i%></a></li>
