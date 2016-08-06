@@ -22,6 +22,7 @@ var content = function*(){
 		}
 
 		var renderObj = {displayObj:displayObj};
+		renderObj.title = res.content_name;
 		switch (res.is_pic) {
 			//image content
 			case 1:
@@ -60,7 +61,7 @@ var content = function*(){
 var list = function*(){
 		var current = parseInt(this.params.page || 1);
 		var tag_name = this.params.tag_name;
-		
+
 		//get top 70 data,read from redis
 		var res = yield contentModel.find({class_tag:tag_name});
 

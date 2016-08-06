@@ -28,12 +28,15 @@
     </div>
     <div id="adsTop">
     	<ul class="adsList">
-    		<li><a href="#"><img src="/ads/123.gif" alt="" /></a></li>
-    		<li><a href="#"><img src="/ads/123.gif" alt="" /></a></li>
-        <li><a href="#"><img src="/ads/123.gif" alt="" /></a></li>
-        <li><a href="#"><img src="/ads/123.gif" alt="" /></a></li>
-        <li><a href="#"><img src="/ads/123.gif" alt="" /></a></li>
+    		<li><a href="#"><img class="ad-image" src="/ads/123.gif" alt="" /></a></li>
+    		<li><a href="#"><img class="ad-image" src="/ads/123.gif" alt="" /></a></li>
+        <li><a href="#"><img class="ad-image" src="/ads/123.gif" alt="" /></a></li>
+        <li><a href="#"><img class="ad-image" src="/ads/123.gif" alt="" /></a></li>
+        <li><a href="#"><img class="ad-image" src="/ads/123.gif" alt="" /></a></li>
     	</ul>
+    </div>
+    <div class="content-title">
+        <h3><%=title%></h3>
     </div>
     <!--content starts here-->
     <div id="img-content" >
@@ -42,7 +45,7 @@
         <%if(img_urls){%>
         <ul class="img-list" >
             <%for(var i of img_urls){%>
-              <li><img src="<%=i%>" alt="" /></li>
+              <li><img class="content-image" src="<%=i%>" alt="" /></li>
             <%}%>
         </ul>
         <%}%>
@@ -63,11 +66,11 @@
     <!--content ends here-->
     <div id="adsFoot">
     	<ul class="adsList">
-        <li><a href="#"><img src="/ads/123.gif" alt="" /></a></li>
-    		<li><a href="#"><img src="/ads/123.gif" alt="" /></a></li>
-        <li><a href="#"><img src="/ads/123.gif" alt="" /></a></li>
-        <li><a href="#"><img src="/ads/123.gif" alt="" /></a></li>
-        <li><a href="#"><img src="/ads/123.gif" alt="" /></a></li>
+        <li><a href="#"><img class="ad-image" src="/ads/123.gif" alt="" /></a></li>
+    		<li><a href="#"><img class="ad-image" src="/ads/123.gif" alt="" /></a></li>
+        <li><a href="#"><img class="ad-image" src="/ads/123.gif" alt="" /></a></li>
+        <li><a href="#"><img class="ad-image" src="/ads/123.gif" alt="" /></a></li>
+        <li><a href="#"><img class="ad-image" src="/ads/123.gif" alt="" /></a></li>
     	</ul>
     </div>
     <div id="footer"></div>
