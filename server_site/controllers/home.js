@@ -63,12 +63,14 @@ var list = function*(){
 		var tag_name = this.params.tag_name;
 
 		//get top 70 data,read from redis
-		var res = yield contentModel.find({class_tag:tag_name});
+		var res = yield contentModel.find({class_tag:tag_name}).skip(current * 70).limit(70);
 
 		console.log(res);
 
-		var count = yield contentModel.count({class_tag:tag_name});
-
+		if(!Global.count)
+		{
+				 Global.count = yield contentModel.count({class_tag:tag_name});
+		}
 		console.log(count);
 		//get all the data counts read from redis
 		//var count = 1400;
@@ -78,7 +80,7 @@ var list = function*(){
 				displayObj:displayObj,//list title data
 				list:res,//list data
 				tag_name:tag_name,//classify name
-				list_count:count,//total list data count
+				list_count:	Global.count,//total list data count
 				page_count:page_count,//render page count
 				current_page:current
 			});
