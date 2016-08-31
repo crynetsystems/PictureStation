@@ -60,6 +60,7 @@ var content = function*(){
 
 var list = function*(){
 		var current = parseInt(this.params.page || 1);
+		current = current > 0 ? current : 1;
 		var tag_name = this.params.tag_name;
 
 		//get top 70 data,read from redis
@@ -71,10 +72,10 @@ var list = function*(){
 		{
 				 Global.count = yield contentModel.count({class_tag:tag_name});
 		}
-		console.log(count);
+		console.log(Global.count);
 		//get all the data counts read from redis
 		//var count = 1400;
-		var page_count = -(~(count/70));
+		var page_count = -(~(Global.count/70));
 
 		this.body = yield render('listpage',{
 				displayObj:displayObj,//list title data
